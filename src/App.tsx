@@ -1,249 +1,85 @@
 import ButtonInput from './components/ButtonInput';
 import CardItem from './components/CardItem';
 import CardWrapper from './components/CardWrapper';
+import CartList from './components/CartList';
+import Checkout from './components/Checkout';
+import FilterBar from './components/FilterBar';
 import FormWrapper from './components/FormWrapper';
+import HeaderBar from './components/HeaderBar';
 import InputField from './components/InputField';
-import { ImagePaths } from './utils/imageUtils';
-
-// Sample product data
-const products = [
-  {
-    id: 1,
-    title: 'Product 1',
-    description: 'This is a great product.',
-    price: 29.99,
-    originalPrice: 39.99,
-    currency: '$',
-    image: ImagePaths.products.product1,
-    imageAlt: 'Product 1 Image',
-    isOnSale: true,
-    badge: 'Sale',
-    rating: 4.5,
-    reviewCount: 10,
-    onAddToCart: () => alert('Added Product 1 to cart!'),
-    onQuickView: () => alert('Quick view for Product 1'),
-  },
-  {
-    id: 2,
-    title: 'Product 2',
-    description: 'This product is out of stock.',
-    price: 49.99,
-    currency: '$',
-    image: ImagePaths.products.product2,
-    imageAlt: 'Product 2 Image',
-    isOutOfStock: true,
-    badge: 'Out of Stock',
-    rating: 4.0,
-    reviewCount: 5,
-    onAddToCart: () => alert('Added Product 2 to cart!'),
-    onQuickView: () => alert('Quick view for Product 2'),
-  },
-  {
-    id: 3,
-    title: 'Product 3',
-    description: 'This is another great product.',
-    price: 19.99,
-    originalPrice: 24.99,
-    currency: '$',
-    image: ImagePaths.products.product3,
-    imageAlt: 'Product 3 Image',
-    isOnSale: true,
-    badge: 'Sale',
-    rating: 5.0,
-    reviewCount: 20,
-    onAddToCart: () => alert('Added Product 3 to cart!'),
-    onQuickView: () => alert('Quick view for Product 3'),
-  },
-  {
-    id: 4,
-    title: 'Wireless Bluetooth Headphones',
-    description:
-      'Premium noise-cancelling headphones with 30-hour battery life.',
-    price: 199.99,
-    originalPrice: 249.99,
-    currency: '$',
-    image: '/images/products/headphones.jpg',
-    imageAlt: 'Wireless Bluetooth Headphones',
-    isOnSale: true,
-    badge: 'Best Seller',
-    rating: 4.8,
-    reviewCount: 156,
-    onAddToCart: () => alert('Added Wireless Headphones to cart!'),
-    onQuickView: () => alert('Quick view for Wireless Headphones'),
-  },
-  {
-    id: 5,
-    title: 'Gaming Mechanical Keyboard',
-    description: 'RGB backlit mechanical keyboard with blue switches.',
-    price: 129.99,
-    currency: '$',
-    image: '/images/products/keyboard.jpg',
-    imageAlt: 'Gaming Mechanical Keyboard',
-    badge: 'Gaming',
-    rating: 4.6,
-    reviewCount: 89,
-    onAddToCart: () => alert('Added Gaming Keyboard to cart!'),
-    onQuickView: () => alert('Quick view for Gaming Keyboard'),
-  },
-  {
-    id: 6,
-    title: 'Smartphone Case',
-    description: 'Durable protective case with wireless charging support.',
-    price: 24.99,
-    currency: '$',
-    image: '/images/products/phone-case.jpg',
-    imageAlt: 'Smartphone Case',
-    rating: 4.2,
-    reviewCount: 234,
-    onAddToCart: () => alert('Added Smartphone Case to cart!'),
-    onQuickView: () => alert('Quick view for Smartphone Case'),
-  },
-  {
-    id: 7,
-    title: 'Laptop Stand Adjustable',
-    description: 'Ergonomic aluminum laptop stand with cooling design.',
-    price: 59.99,
-    originalPrice: 79.99,
-    currency: '$',
-    image: '/images/products/laptop-stand.jpg',
-    imageAlt: 'Laptop Stand Adjustable',
-    isOnSale: true,
-    rating: 4.7,
-    reviewCount: 67,
-    onAddToCart: () => alert('Added Laptop Stand to cart!'),
-    onQuickView: () => alert('Quick view for Laptop Stand'),
-  },
-  {
-    id: 8,
-    title: 'USB-C Hub Multiport',
-    description:
-      'Compact 7-in-1 USB-C hub with HDMI, USB 3.0, and SD card slots.',
-    price: 45.99,
-    currency: '$',
-    image: '/images/products/usb-hub.jpg',
-    imageAlt: 'USB-C Hub Multiport',
-    badge: 'Compact',
-    rating: 4.4,
-    reviewCount: 123,
-    onAddToCart: () => alert('Added USB-C Hub to cart!'),
-    onQuickView: () => alert('Quick view for USB-C Hub'),
-  },
-  {
-    id: 9,
-    title: 'Wireless Mouse Ergonomic',
-    description: 'Comfortable wireless mouse with precision tracking.',
-    price: 34.99,
-    currency: '$',
-    image: '/images/products/wireless-mouse.jpg',
-    imageAlt: 'Wireless Mouse Ergonomic',
-    rating: 4.3,
-    reviewCount: 178,
-    onAddToCart: () => alert('Added Wireless Mouse to cart!'),
-    onQuickView: () => alert('Quick view for Wireless Mouse'),
-  },
-  {
-    id: 10,
-    title: 'Portable Charger Power Bank',
-    description: '20,000mAh portable battery with fast charging technology.',
-    price: 39.99,
-    originalPrice: 59.99,
-    currency: '$',
-    image: '/images/products/power-bank.jpg',
-    imageAlt: 'Portable Charger Power Bank',
-    isOnSale: true,
-    badge: 'Fast Charge',
-    rating: 4.5,
-    reviewCount: 201,
-    onAddToCart: () => alert('Added Power Bank to cart!'),
-    onQuickView: () => alert('Quick view for Power Bank'),
-  },
-  {
-    id: 11,
-    title: 'Desk Organizer Bamboo',
-    description:
-      'Sustainable bamboo desk organizer with multiple compartments.',
-    price: 28.99,
-    currency: '$',
-    image: '/images/products/desk-organizer.jpg',
-    imageAlt: 'Desk Organizer Bamboo',
-    badge: 'Eco-Friendly',
-    rating: 4.6,
-    reviewCount: 94,
-    onAddToCart: () => alert('Added Desk Organizer to cart!'),
-    onQuickView: () => alert('Quick view for Desk Organizer'),
-  },
-  {
-    id: 12,
-    title: 'Monitor Screen Cleaner Kit',
-    description: 'Professional screen cleaning kit with microfiber cloth.',
-    price: 12.99,
-    currency: '$',
-    image: '/images/products/screen-cleaner.jpg',
-    imageAlt: 'Monitor Screen Cleaner Kit',
-    rating: 4.1,
-    reviewCount: 45,
-    onAddToCart: () => alert('Added Screen Cleaner to cart!'),
-    onQuickView: () => alert('Quick view for Screen Cleaner'),
-  },
-  {
-    id: 13,
-    title: 'Cable Management Box',
-    description: 'Hide and organize all your cables with this sleek cable box.',
-    price: 22.99,
-    currency: '$',
-    image: '/images/products/cable-box.jpg',
-    imageAlt: 'Cable Management Box',
-    rating: 4.0,
-    reviewCount: 78,
-    onAddToCart: () => alert('Added Cable Management Box to cart!'),
-    onQuickView: () => alert('Quick view for Cable Management Box'),
-  },
-  {
-    id: 14,
-    title: 'LED Desk Lamp Adjustable',
-    description: 'Eye-caring LED desk lamp with multiple brightness levels.',
-    price: 49.99,
-    originalPrice: 69.99,
-    currency: '$',
-    image: '/images/products/desk-lamp.jpg',
-    imageAlt: 'LED Desk Lamp Adjustable',
-    isOnSale: true,
-    badge: 'Eye Care',
-    rating: 4.7,
-    reviewCount: 112,
-    onAddToCart: () => alert('Added LED Desk Lamp to cart!'),
-    onQuickView: () => alert('Quick view for LED Desk Lamp'),
-  },
-  {
-    id: 15,
-    title: 'Webcam HD 1080p',
-    description: 'High-definition webcam with auto-focus and noise reduction.',
-    price: 79.99,
-    currency: '$',
-    image: '/images/products/webcam.jpg',
-    imageAlt: 'Webcam HD 1080p',
-    badge: 'HD Quality',
-    rating: 4.4,
-    reviewCount: 167,
-    isOutOfStock: true,
-    onAddToCart: () => alert('Added Webcam to cart!'),
-    onQuickView: () => alert('Quick view for Webcam'),
-  },
-];
+import SocialButton from './components/SocialButton';
+import { cartItems, products } from './db';
 
 export default function App() {
   return (
     <div>
-      <h1 className="text-3xl bg-gray-800 text-white font-bold p-4">
-        Hello world!
-      </h1>
+      <HeaderBar />
+
+      <div className="p-4">
+        <FilterBar
+          // Categories
+          categories={[
+            { id: 'electronics', label: 'Electronics' },
+            { id: 'clothing', label: 'Clothing' },
+            // ...
+          ]}
+          selectedCategory="electronics"
+          onCategoryChange={(category) => {
+            // Handle category change
+          }}
+          // Price Ranges
+          priceOptions={[
+            { id: 'under-50', label: 'Under $50', range: { min: 0, max: 50 } },
+            { id: '50-100', label: '$50 - $100', range: { min: 50, max: 100 } },
+            // ...
+          ]}
+          selectedPrice="under-50"
+          onPriceChange={(priceId) => {
+            // Handle price change
+          }}
+          // Sort Options
+          sortOptions={[
+            { id: 'popular', label: 'Most Popular' },
+            { id: 'newest', label: 'Newest First' },
+            { id: 'price-low', label: 'Price: Low to High' },
+            { id: 'price-high', label: 'Price: High to Low' },
+          ]}
+          selectedSort="popular"
+          onSortChange={(sort) => {
+            // Handle sort change
+          }}
+        />
+      </div>
+
+      <Checkout onSubmit={(data) => console.log(data)} />
 
       <div className="p-4">
         <FormWrapper>
-          <InputField label="Input Field" placeholder="Type here..." />
-          <InputField label="Input Field" placeholder="Type here..." />
-          <ButtonInput>Click Me</ButtonInput>
+          <h3>Login</h3>
+          <InputField label="E-mail" placeholder="Type here..." />
+          <InputField label="Name" placeholder="Type here..." />
+          <ButtonInput>Submit</ButtonInput>
         </FormWrapper>
+      </div>
+
+      <div className="p-4">
+        <FormWrapper>
+          <h3>Register</h3>
+          <InputField label="Username" placeholder="Type here..." />
+          <InputField label="Email" placeholder="Type here..." />
+          <InputField
+            label="Password"
+            type="password"
+            placeholder="Type here..."
+          />
+          <ButtonInput>Submit</ButtonInput>
+        </FormWrapper>
+      </div>
+
+      <div className="p-4 flex flex-col gap-2">
+        <SocialButton provider="google" />
+        <SocialButton provider="facebook" variant="outline" />
+        <SocialButton provider="x" variant="outline" />
       </div>
 
       <div className="p-4">
@@ -252,6 +88,10 @@ export default function App() {
             <CardItem key={product.id} {...product} />
           ))}
         </CardWrapper>
+      </div>
+
+      <div className="p-4">
+        <CartList items={cartItems} />
       </div>
     </div>
   );

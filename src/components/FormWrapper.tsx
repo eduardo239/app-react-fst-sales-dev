@@ -36,7 +36,7 @@ export default function FormWrapper({
 
   const variantStyles = {
     default: 'bg-white',
-    card: 'bg-white border border-gray-200 rounded-lg shadow-sm p-6',
+    card: 'bg-white border border-gray-200 p-6',
     minimal: 'bg-transparent',
   };
 
@@ -104,7 +104,7 @@ export default function FormWrapper({
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Loading Overlay */}
           {loading && (
-            <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center rounded-lg">
+            <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
               <div className="flex items-center space-x-2">
                 <svg
                   className="animate-spin h-5 w-5 text-gray-500"

@@ -42,7 +42,6 @@ export default function CardItem({
   imageAlt,
   isOnSale = false,
   isOutOfStock = false,
-  badge,
   rating,
   reviewCount,
   onClick,
@@ -111,12 +110,6 @@ export default function CardItem({
               <div className="bg-gray-200 w-full h-full" />
             </div>
           ) : (
-            // <img
-            //   src={image}
-            //   alt={imageAlt || title}
-            //   className="w-full h-full object-cover"
-            //   loading="lazy"
-            // />
             <ImageWithFallback
               src={image}
               alt={imageAlt || title}
@@ -128,13 +121,8 @@ export default function CardItem({
 
         {/* Badges and Status Indicators */}
         <div className="absolute top-2 left-2 flex flex-col gap-1">
-          {badge && (
-            <span className="px-2 py-1 bg-gray-900 text-white text-xs font-medium rounded">
-              {badge}
-            </span>
-          )}
           {isOnSale && (
-            <span className="px-2 py-1 bg-red-500 text-white text-xs font-medium rounded">
+            <span className="px-2 py-1 bg-red-500 text-white text-xs font-medium">
               Sale
             </span>
           )}
@@ -143,7 +131,7 @@ export default function CardItem({
         {/* Out of Stock Overlay */}
         {isOutOfStock && (
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <span className="bg-white text-gray-900 px-3 py-1 rounded text-sm font-medium">
+            <span className="w-full text-center bg-white text-gray-900 px-3 py-1 text-sm font-medium">
               Out of Stock
             </span>
           </div>
@@ -153,7 +141,7 @@ export default function CardItem({
         {onQuickView && !isOutOfStock && (
           <button
             onClick={handleQuickView}
-            className="absolute top-2 right-2 p-2 bg-white bg-opacity-90 hover:bg-white rounded-full opacity-0 group-hover:opacity-100"
+            className="absolute top-2 right-2 p-2 bg-white bg-opacity-90 hover:bg-white opacity-0 group-hover:opacity-100"
           >
             <svg
               className="w-4 h-4 text-gray-600"
@@ -198,7 +186,7 @@ export default function CardItem({
                 <svg
                   key={i}
                   className={cn(
-                    'w-3 h-3',
+                    'w-4 h-4',
                     i < Math.floor(rating) ? 'text-yellow-400' : 'text-gray-300'
                   )}
                   fill="currentColor"
@@ -215,7 +203,7 @@ export default function CardItem({
         )}
 
         {/* Price */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-lg font-semibold text-gray-900">
               {formatPrice(price)}
@@ -231,7 +219,7 @@ export default function CardItem({
           {onAddToCart && !isOutOfStock && (
             <button
               onClick={handleAddToCart}
-              className="px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+              className="w-full px-3 py-1.5 bg-gray-900 text-white text-xs font-medium hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 hover:cursor-pointer mt-2"
             >
               Add to Cart
             </button>
