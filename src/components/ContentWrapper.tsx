@@ -3,48 +3,76 @@ import { cn } from '../styles/theme';
 
 interface ContentWrapperProps {
   children: React.ReactNode;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full';
-  padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
-  className?: string;
+  variant?: 'default' | 'narrow' | 'wide' | 'full';
+  spacing?: 'none' | 'tight' | 'default' | 'relaxed' | 'loose';
+  backgroundColor?: 'none' | 'white' | 'gray' | 'primary';
   centered?: boolean;
+  className?: string;
+  containerClassName?: string;
 }
 
 export default function ContentWrapper({
   children,
-  maxWidth = 'xl',
-  padding = 'md',
-  className = '',
+  variant = 'default',
+  spacing = 'default',
+  backgroundColor = 'none',
   centered = true,
+  className = '',
+  containerClassName = '',
 }: ContentWrapperProps) {
-  const maxWidthStyles = {
-    sm: 'max-w-sm', // 384px
-    md: 'max-w-md', // 448px
-    lg: 'max-w-lg', // 512px
-    xl: 'max-w-xl', // 576px
-    '2xl': 'max-w-2xl', // 672px
-    '3xl': 'max-w-3xl', // 768px
-    full: 'max-w-full',
+  // Base max-width is now 1000px for 'default' variant
+  const variantStyles = {
+    default: 'max-w-[1000px]', // Custom 1000px
+    narrow: 'max-w-[720px]', // Narrower layout
+    wide: 'max-w-[1200px]', // Wider layout
+    full: 'max-w-full', // Full width
   };
 
-  const paddingStyles = {
+  // Enhanced responsive spacing
+  const spacingStyles = {
+    none: 'p-0',
+    tight: 'px-3 py-2 sm:px-4 sm:py-3',
+    default: 'px-4 py-4 sm:px-6 sm:py-6 lg:px-8',
+    relaxed: 'px-4 py-6 sm:px-8 sm:py-10 lg:px-12 lg:py-12',
+    loose: 'px-6 py-8 sm:px-10 sm:py-12 lg:px-16 lg:py-16',
+  };
+
+  // Background colors with subtle gradients
+  const backgroundStyles = {
     none: '',
-    sm: 'px-4 py-2',
-    md: 'px-6 py-4',
-    lg: 'px-8 py-6',
-    xl: 'px-12 py-8',
+    white: 'bg-white shadow-sm',
+    gray: 'bg-gradient-to-b from-gray-50 to-gray-100',
+    primary: 'bg-gradient-to-b from-blue-50 to-blue-100',
   };
 
   return (
     <div
       className={cn(
         'w-full',
-        maxWidthStyles[maxWidth],
-        paddingStyles[padding],
-        centered && 'mx-auto',
-        className
+        backgroundStyles[backgroundColor],
+        containerClassName
       )}
     >
-      {children}
+      <div
+        className={cn(
+          'w-full relative',
+          variantStyles[variant],
+          spacingStyles[spacing],
+          centered && 'mx-auto',
+          'transition-all duration-300 ease-in-out', // Smooth transitions
+          // Responsive container behavior
+          'sm:w-[95%]',
+          'md:w-[92%]',
+          'lg:w-[90%]',
+          // Add backdrop blur effect when backgroundColor is set
+          backgroundColor !== 'none' && 'backdrop-blur-sm',
+          // Base container styles
+          'rounded-lg',
+          className
+        )}
+      >
+        {children}
+      </div>
     </div>
   );
 }

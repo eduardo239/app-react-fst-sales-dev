@@ -4,8 +4,8 @@
 
 ### User Authentication
 
-- [ ] Implement sign up form
-- [ ] Implement login form
+- [x] Implement sign up form
+- [x] Implement login form
 - [ ] Implement logout functionality
 - [ ] Password reset and recovery
 - [ ] Social login integration

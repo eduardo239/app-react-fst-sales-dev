@@ -1,32 +1,31 @@
 import { useState } from 'react';
 import { cn } from '../styles/theme';
 import { ImageWithFallback, ImagePaths } from '../utils/imageUtils';
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderBarProps {
   cartItemCount?: number;
-  onCartClick?: () => void;
   onSearchSubmit?: (query: string) => void;
   isLoggedIn?: boolean;
   userAvatar?: string;
   userName?: string;
-  onLogin?: () => void;
-  onRegister?: () => void;
+
   onLogout?: () => void;
   onProfileClick?: () => void;
 }
 
 export default function HeaderBar({
   cartItemCount = 0,
-  onCartClick,
   onSearchSubmit,
   isLoggedIn = false,
   userAvatar,
   userName,
-  onLogin,
-  onRegister,
+
   onLogout,
   onProfileClick,
 }: HeaderBarProps) {
+  const navigate = useNavigate();
+
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -38,10 +37,12 @@ export default function HeaderBar({
 
   const navigationItems = [
     { name: 'Home', href: '/' },
-    { name: 'Shop', href: '/shop' },
-    { name: 'Categories', href: '/categories' },
+    // { name: 'Categories', href: '/categories' },
   ];
 
+  const onRegister = () => navigate('/register');
+  const onLogin = () => navigate('/login');
+  const onCartClick = () => navigate('/cart');
   return (
     <header className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

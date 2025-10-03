@@ -101,7 +101,10 @@ export default function FormWrapper({
         )}
 
         {/* Form Content */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 border border-gray-200 p-6"
+        >
           {/* Loading Overlay */}
           {loading && (
             <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">

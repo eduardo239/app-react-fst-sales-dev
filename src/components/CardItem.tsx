@@ -131,7 +131,7 @@ export default function CardItem({
         {/* Out of Stock Overlay */}
         {isOutOfStock && (
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <span className="w-full text-center bg-white text-gray-900 px-3 py-1 text-sm font-medium">
+            <span className="w-full text-center bg-gray-400 text-gray-900 px-3 py-1 text-sm font-medium">
               Out of Stock
             </span>
           </div>

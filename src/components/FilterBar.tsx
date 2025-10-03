@@ -144,12 +144,7 @@ export default function FilterBar({
   };
 
   return (
-    <div
-      className={cn(
-        'flex items-center gap-4 p-4 bg-white border-b border-gray-200',
-        className
-      )}
-    >
+    <div className={cn('flex items-center gap-4 bg-white', className)}>
       <Dropdown
         label="Category"
         options={categories}
