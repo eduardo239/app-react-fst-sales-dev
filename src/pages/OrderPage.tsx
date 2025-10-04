@@ -5,7 +5,7 @@ import ContentWrapper from '../components/ContentWrapper';
 import TextHeader1 from '../components/TextHeader1';
 import ButtonInput from '../components/ButtonInput';
 import Separator from '../components/Separator';
-import { mockOrders } from '../db';
+import { mockOrders } from '../utils/db';
 
 const statusColors = {
   processing: 'bg-blue-100 text-blue-800',

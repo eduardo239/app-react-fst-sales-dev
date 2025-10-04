@@ -5,7 +5,7 @@ import ContentWrapper from '../components/ContentWrapper';
 import ButtonInput from '../components/ButtonInput';
 import Separator from '../components/Separator';
 import type { ProductImage, ProductVariant } from '../types/product';
-import { product, relatedProducts } from '../db';
+import { product, relatedProducts } from '../utils/db';
 
 export default function ProductPage() {
   const navigate = useNavigate();

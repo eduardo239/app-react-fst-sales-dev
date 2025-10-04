@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../styles/theme';
-import { initialCartItems } from '../db';
+import { initialCartItems } from '../utils/db';
 import CartList from '../components/CartList';
 import TextHeader1 from '../components/TextHeader1';
 import ContentWrapper from '../components/ContentWrapper';

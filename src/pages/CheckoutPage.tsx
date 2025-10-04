@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../styles/theme';
-import { mockCartItems } from '../db';
+import { mockCartItems } from '../utils/db';
 import type { PaymentDetails } from '../types/payment';
 import type { ShippingDetails } from '../types/shipping';
 import ContentWrapper from '../components/ContentWrapper';

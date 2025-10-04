@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { cn } from '../styles/theme';
-import { products } from '../db';
+import { products } from '../utils/db';
 import CardWrapper from '../components/CardWrapper';
 import CardItem from '../components/CardItem';
 import FilterBar from '../components/FilterBar';
