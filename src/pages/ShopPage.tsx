@@ -5,7 +5,7 @@ import CardWrapper from '../components/CardWrapper';
 import CardItem from '../components/CardItem';
 import FilterBar from '../components/FilterBar';
 import ContentWrapper from '../components/ContentWrapper';
-import { categories, priceRanges, sortOptions } from '../options';
+import { categories, priceRanges, sortOptions } from '../utils/options';
 
 export default function ShopPage() {
   const [filteredProducts, setFilteredProducts] = useState(products);
