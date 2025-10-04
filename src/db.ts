@@ -1,6 +1,6 @@
-import { ImagePaths } from "./utils/imageUtils";
+import type { Order } from './types/order';
+import { ImagePaths } from './utils/imageUtils';
 
-// Sample product data
 export const products = [
   {
     id: 1,
@@ -226,27 +226,200 @@ export const products = [
   },
 ];
 
-
 export const cartItems = [
   {
     id: 1,
-    title: "Product Name",
+    title: 'Product Name',
     price: 29.99,
-    image: "/path/to/image.jpg",
-    quantity: 2
+    image: '/path/to/image.jpg',
+    quantity: 2,
   },
   {
     id: 2,
-    title: "Another Product",
+    title: 'Another Product',
     price: 49.99,
-    image: "/path/to/image2.jpg",
-    quantity: 1
+    image: '/path/to/image2.jpg',
+    quantity: 1,
   },
   {
     id: 3,
-    title: "Third Product",
+    title: 'Third Product',
     price: 19.99,
-    image: "/path/to/image3.jpg",
-    quantity: 3
-  }
+    image: '/path/to/image3.jpg',
+    quantity: 3,
+  },
+];
+
+export const relatedProducts = [
+  {
+    id: 2,
+    name: 'Wireless Earbuds',
+    price: 149.99,
+    image: ImagePaths.products.product2,
+    rating: 4.3,
+    reviewCount: 95,
+  },
+  {
+    id: 3,
+    name: 'Bluetooth Speaker',
+    price: 129.99,
+    image: ImagePaths.products.product1,
+    rating: 4.7,
+    reviewCount: 82,
+  },
+];
+
+export const product = {
+  id: 1,
+  name: 'Premium Wireless Headphones',
+  description:
+    'Experience premium sound quality with our latest wireless headphones. Features include active noise cancellation, 30-hour battery life, and premium materials for ultimate comfort.',
+  price: 199.99,
+  compareAtPrice: 249.99,
+  rating: 4.5,
+  reviewCount: 128,
+  sku: 'WH-2025-BLK',
+  images: [
+    {
+      id: 1,
+      url: ImagePaths.products.product1,
+      alt: 'Product front view',
+    },
+    {
+      id: 2,
+      url: ImagePaths.products.product2,
+      alt: 'Product side view',
+    },
+  ],
+  variants: [
+    {
+      id: 1,
+      name: 'Black',
+      price: 199.99,
+      compareAtPrice: 249.99,
+      color: '#000000',
+      inStock: true,
+    },
+    {
+      id: 2,
+      name: 'White',
+      price: 199.99,
+      compareAtPrice: 249.99,
+      color: '#FFFFFF',
+      inStock: true,
+    },
+    {
+      id: 3,
+      name: 'Navy',
+      price: 199.99,
+      compareAtPrice: 249.99,
+      color: '#000080',
+      inStock: false,
+    },
+  ],
+  features: [
+    'Active Noise Cancellation',
+    '30-hour battery life',
+    'Premium memory foam cushions',
+    'Bluetooth 5.0 connectivity',
+    'Built-in voice assistant',
+    'Touch controls',
+  ],
+  specs: [
+    { name: 'Driver Size', value: '40mm' },
+    { name: 'Frequency Response', value: '20Hz-20kHz' },
+    { name: 'Impedance', value: '32 Ohm' },
+    { name: 'Weight', value: '250g' },
+  ],
+};
+
+export const mockOrders: Order[] = [
+  {
+    id: 'ORD-123456',
+    date: '2025-10-01',
+    status: 'delivered',
+    total: 339.97,
+    items: [
+      {
+        id: 1,
+        name: 'Wireless Headphones',
+        price: 199.99,
+        quantity: 1,
+        image: ImagePaths.products.product1,
+      },
+      {
+        id: 2,
+        name: 'Smart Watch',
+        price: 139.98,
+        quantity: 1,
+        image: ImagePaths.products.product2,
+      },
+    ],
+    trackingNumber: 'TRK123456789',
+    shippingAddress: {
+      name: 'John Doe',
+      address: '123 Main St',
+      city: 'New York',
+      state: 'NY',
+      zipCode: '10001',
+    },
+  },
+  {
+    id: 'ORD-789012',
+    date: '2025-10-03',
+    status: 'processing',
+    total: 159.99,
+    items: [
+      {
+        id: 3,
+        name: 'Bluetooth Speaker',
+        price: 159.99,
+        quantity: 1,
+        image: ImagePaths.products.product1,
+      },
+    ],
+    shippingAddress: {
+      name: 'John Doe',
+      address: '123 Main St',
+      city: 'New York',
+      state: 'NY',
+      zipCode: '10001',
+    },
+  },
+];
+
+export const mockCartItems = [
+  {
+    id: 1,
+    name: 'Wireless Headphones',
+    price: 149.99,
+    quantity: 1,
+    image: '/images/products/product1.jpg',
+  },
+  {
+    id: 2,
+    name: 'Smart Watch',
+    price: 299.99,
+    quantity: 1,
+    image: '/images/products/product2.jpg',
+  },
+];
+
+export const initialCartItems = [
+  {
+    id: 1,
+    title: 'Wireless Headphones',
+    price: 199.99,
+    currency: '$',
+    image: ImagePaths.products.product1,
+    quantity: 1,
+  },
+  {
+    id: 2,
+    title: 'Smart Watch',
+    price: 299.99,
+    currency: '$',
+    image: ImagePaths.products.product2,
+    quantity: 1,
+  },
 ];

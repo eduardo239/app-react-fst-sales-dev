@@ -1,49 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { cn } from '../styles/theme';
+import { mockCartItems } from '../db';
+import type { PaymentDetails } from '../types/payment';
+import type { ShippingDetails } from '../types/shipping';
 import ContentWrapper from '../components/ContentWrapper';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
 import ButtonInput from '../components/ButtonInput';
 import Separator from '../components/Separator';
 import TextHeader1 from '../components/TextHeader1';
-import { cn } from '../styles/theme';
-
-interface ShippingDetails {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  address: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  country: string;
-}
-
-interface PaymentDetails {
-  cardNumber: string;
-  cardHolder: string;
-  expiryDate: string;
-  cvv: string;
-}
-
-// Mock cart items - in a real app, this would come from your cart state
-const mockCartItems = [
-  {
-    id: 1,
-    name: 'Wireless Headphones',
-    price: 149.99,
-    quantity: 1,
-    image: '/images/products/product1.jpg',
-  },
-  {
-    id: 2,
-    name: 'Smart Watch',
-    price: 299.99,
-    quantity: 1,
-    image: '/images/products/product2.jpg',
-  },
-];
 
 export default function CheckoutPage() {
   const navigate = useNavigate();

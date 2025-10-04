@@ -1,30 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../styles/theme';
+import { initialCartItems } from '../db';
 import CartList from '../components/CartList';
 import TextHeader1 from '../components/TextHeader1';
 import ContentWrapper from '../components/ContentWrapper';
-import { ImagePaths } from '../utils/imageUtils';
-
-// Sample cart items - replace with your actual data source
-const initialCartItems = [
-  {
-    id: 1,
-    title: 'Wireless Headphones',
-    price: 199.99,
-    currency: '$',
-    image: ImagePaths.products.product1,
-    quantity: 1,
-  },
-  {
-    id: 2,
-    title: 'Smart Watch',
-    price: 299.99,
-    currency: '$',
-    image: ImagePaths.products.product2,
-    quantity: 1,
-  },
-];
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState(initialCartItems);

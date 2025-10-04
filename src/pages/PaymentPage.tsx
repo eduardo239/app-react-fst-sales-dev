@@ -1,19 +1,13 @@
-import React, { useState, type JSX } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { cn } from '../styles/theme';
+import { useNavigate } from 'react-router-dom';
+import type { PaymentMethod } from '../types/payment';
 import ContentWrapper from '../components/ContentWrapper';
 import TextHeader1 from '../components/TextHeader1';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
 import ButtonInput from '../components/ButtonInput';
 import Separator from '../components/Separator';
-
-interface PaymentMethod {
-  id: string;
-  title: string;
-  description: string;
-  icon: JSX.Element;
-}
 
 const paymentMethods: PaymentMethod[] = [
   {

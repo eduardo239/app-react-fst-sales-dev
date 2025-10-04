@@ -13,7 +13,6 @@ export interface CardItemProps {
   className?: string;
 }
 
-
 export interface CardWrapperProps {
   children: React.ReactNode;
   columns?: {

@@ -1,90 +1,11 @@
 import { useState } from 'react';
 import { cn } from '../styles/theme';
+import type { Order } from '../types/order';
 import ContentWrapper from '../components/ContentWrapper';
 import TextHeader1 from '../components/TextHeader1';
 import ButtonInput from '../components/ButtonInput';
 import Separator from '../components/Separator';
-import { ImagePaths } from '../utils/imageUtils';
-
-interface OrderItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
-
-interface Order {
-  id: string;
-  date: string;
-  status: 'processing' | 'shipped' | 'delivered' | 'cancelled';
-  total: number;
-  items: OrderItem[];
-  trackingNumber?: string;
-  shippingAddress: {
-    name: string;
-    address: string;
-    city: string;
-    state: string;
-    zipCode: string;
-  };
-}
-
-// Mock orders data - replace with actual orders from your backend
-const mockOrders: Order[] = [
-  {
-    id: 'ORD-123456',
-    date: '2025-10-01',
-    status: 'delivered',
-    total: 339.97,
-    items: [
-      {
-        id: 1,
-        name: 'Wireless Headphones',
-        price: 199.99,
-        quantity: 1,
-        image: ImagePaths.products.product1,
-      },
-      {
-        id: 2,
-        name: 'Smart Watch',
-        price: 139.98,
-        quantity: 1,
-        image: ImagePaths.products.product2,
-      },
-    ],
-    trackingNumber: 'TRK123456789',
-    shippingAddress: {
-      name: 'John Doe',
-      address: '123 Main St',
-      city: 'New York',
-      state: 'NY',
-      zipCode: '10001',
-    },
-  },
-  {
-    id: 'ORD-789012',
-    date: '2025-10-03',
-    status: 'processing',
-    total: 159.99,
-    items: [
-      {
-        id: 3,
-        name: 'Bluetooth Speaker',
-        price: 159.99,
-        quantity: 1,
-        image: ImagePaths.products.product1,
-      },
-    ],
-    shippingAddress: {
-      name: 'John Doe',
-      address: '123 Main St',
-      city: 'New York',
-      state: 'NY',
-      zipCode: '10001',
-    },
-  },
-];
+import { mockOrders } from '../db';
 
 const statusColors = {
   processing: 'bg-blue-100 text-blue-800',
