@@ -7,7 +7,7 @@ import type { HeaderBarProps } from '../types/layout';
 export default function HeaderBar({
   cartItemCount = 0,
   onSearchSubmit,
-  isLoggedIn = false,
+  isLoggedIn = true,
   userAvatar,
   userName,
 

@@ -1,5 +1,5 @@
-import type { Order } from './types/order';
-import { ImagePaths } from './utils/imageUtils';
+import type { Order } from '../types/order';
+import { ImagePaths } from './imageUtils';
 
 export const products = [
   {
