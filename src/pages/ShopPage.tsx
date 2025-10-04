@@ -145,6 +145,7 @@ export default function ShopPage() {
           {filteredProducts.map((product) => (
             <CardItem
               key={product.id}
+              id={product.id}
               title={product.title}
               description={product.description}
               price={product.price}
@@ -154,12 +155,7 @@ export default function ShopPage() {
               imageAlt={product.imageAlt}
               isOnSale={product.isOnSale}
               isOutOfStock={product.isOutOfStock}
-              badge={product.badge}
-              rating={product.rating}
-              reviewCount={product.reviewCount}
-              onClick={() => handleQuickView(product)}
               onAddToCart={() => handleAddToCart(product)}
-              variant="default"
             />
           ))}
         </CardWrapper>

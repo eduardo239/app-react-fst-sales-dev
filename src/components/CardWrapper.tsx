@@ -111,42 +111,32 @@ export default function CardWrapper({
   // Convert children to array
   const childrenArray = React.Children.toArray(children);
 
-  // Create loading skeletons
+  // Create loading skeletons that match the minimalist card style
   const loadingSkeletons = Array.from({ length: loadingCount }, (_, index) => (
     <div
       key={`skeleton-${index}`}
-      className="bg-white border border-gray-200 overflow-hidden p-4"
+      className="bg-white rounded-lg shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-md"
     >
-      {/* Image skeleton */}
-      <div
-        className="w-full bg-gray-200 mb-3"
-        style={{ height: `${Math.random() * 100 + 150}px` }}
-      />
+      {/* Image skeleton with aspect ratio */}
+      <div className="relative w-full pb-[100%] bg-gray-100 animate-pulse">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-gray-200" />
+        </div>
+      </div>
 
       {/* Content skeleton */}
-      <div className="space-y-2">
+      <div className="p-4 space-y-3">
         {/* Title skeleton */}
-        <div className="h-4 bg-gray-200 w-3/4" />
+        <div className="h-5 bg-gray-100 rounded-md w-4/5 animate-pulse" />
 
-        {/* Description skeleton (random chance) */}
-        {Math.random() > 0.5 && (
-          <div className="space-y-1">
-            <div className="h-3 bg-gray-200 w-full" />
-            <div className="h-3 bg-gray-200 w-2/3" />
-          </div>
-        )}
+        {/* Price skeleton */}
+        <div className="flex items-center justify-between">
+          <div className="h-4 bg-gray-100 rounded-md w-1/4 animate-pulse" />
+          <div className="h-4 bg-gray-100 rounded-md w-1/4 animate-pulse" />
+        </div>
 
-        {/* Rating skeleton */}
-        {Math.random() > 0.3 && (
-          <div className="flex items-center gap-1">
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className="w-3 h-3 bg-gray-200" />
-              ))}
-            </div>
-            <div className="h-3 bg-gray-200 w-8" />
-          </div>
-        )}
+        {/* Action button skeleton */}
+        <div className="h-8 bg-gray-100 rounded-md w-full animate-pulse mt-2" />
 
         {/* Price and button skeleton */}
         <div className="flex items-center justify-between">

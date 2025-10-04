@@ -3,6 +3,8 @@ import ButtonInput from '../components/ButtonInput';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
 import TextHeader1 from '../components/TextHeader1';
+import Separator from '../components/Separator';
+import SocialButton from '../components/SocialButton';
 
 export default function RegisterPage() {
   const [form, setForm] = useState({
@@ -37,6 +39,12 @@ export default function RegisterPage() {
         />
         <ButtonInput>Submit</ButtonInput>
       </FormWrapper>
+      <Separator label="Or continue with" />
+      <div className="w-full max-w-md mx-auto gap-2 flex flex-col flex-wrap justify-center mt-6">
+        <SocialButton provider="google" variant="outline" />
+        <SocialButton provider="facebook" variant="outline" />
+        <SocialButton provider="x" variant="outline" />
+      </div>
     </div>
   );
 }

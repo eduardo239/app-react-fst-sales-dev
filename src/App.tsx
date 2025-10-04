@@ -11,13 +11,12 @@ import ProductPage from './pages/ProductPage';
 
 export default function App() {
   return (
-    <div className="w-full min-h-screen">
+    <div>
       <HeaderBar />
-
       <Routes>
         {/* Define your routes here */}
         <Route path="/" element={<HomePage />} />
-        <Route path="/product" element={<ProductPage />} />
+        <Route path="/products" element={<ProductPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/orders" element={<OrderPage />} />
