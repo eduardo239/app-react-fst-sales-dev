@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import type { CardWrapperProps } from '../types/card';
 import { cn } from '../styles/theme';
 import CardSkeleton from './CardSkeleton';
-import type { CardWrapperProps } from '../types/card';
 
 export default function CardWrapper({
   children,
