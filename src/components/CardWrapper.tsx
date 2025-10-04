@@ -1,22 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '../styles/theme';
-
-interface CardWrapperProps {
-  children: React.ReactNode;
-  columns?: {
-    sm?: number;
-    md?: number;
-    lg?: number;
-    xl?: number;
-    '2xl'?: number;
-    '3xl'?: number;
-  };
-  gap?: 'sm' | 'md' | 'lg';
-  className?: string;
-  loading?: boolean;
-  loadingCount?: number;
-  orderBy?: 'vertical' | 'horizontal' | 'balanced'; // vertical = CSS columns, horizontal = left-to-right, balanced = height-aware distribution
-}
+import CardSkeleton from './CardSkeleton';
+import type { CardWrapperProps } from '../types/card';
 
 export default function CardWrapper({
   children,
@@ -113,41 +98,7 @@ export default function CardWrapper({
 
   // Create loading skeletons that match the minimalist card style
   const loadingSkeletons = Array.from({ length: loadingCount }, (_, index) => (
-    <div
-      key={`skeleton-${index}`}
-      className="bg-white rounded-lg shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-md"
-    >
-      {/* Image skeleton with aspect ratio */}
-      <div className="relative w-full pb-[100%] bg-gray-100 animate-pulse">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-12 h-12 rounded-full bg-gray-200" />
-        </div>
-      </div>
-
-      {/* Content skeleton */}
-      <div className="p-4 space-y-3">
-        {/* Title skeleton */}
-        <div className="h-5 bg-gray-100 rounded-md w-4/5 animate-pulse" />
-
-        {/* Price skeleton */}
-        <div className="flex items-center justify-between">
-          <div className="h-4 bg-gray-100 rounded-md w-1/4 animate-pulse" />
-          <div className="h-4 bg-gray-100 rounded-md w-1/4 animate-pulse" />
-        </div>
-
-        {/* Action button skeleton */}
-        <div className="h-8 bg-gray-100 rounded-md w-full animate-pulse mt-2" />
-
-        {/* Price and button skeleton */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="h-5 bg-gray-200 w-16" />
-            {Math.random() > 0.7 && <div className="h-4 bg-gray-200 w-12" />}
-          </div>
-          <div className="h-7 bg-gray-200 w-20" />
-        </div>
-      </div>
-    </div>
+    <CardSkeleton key={`skeleton-${index}`} index={index} />
   ));
 
   const itemsToRender = loading ? loadingSkeletons : childrenArray;

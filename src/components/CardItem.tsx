@@ -2,21 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '../styles/theme';
 import { ImagePaths, ImageWithFallback } from '../utils/imageUtils';
-
-interface CardItemProps {
-  id: number;
-  title: string;
-  description?: string;
-  price: number;
-  originalPrice?: number;
-  currency?: string;
-  image: string;
-  imageAlt?: string;
-  isOnSale?: boolean;
-  isOutOfStock?: boolean;
-  onAddToCart?: () => void;
-  className?: string;
-}
+import type { CardItemProps } from '../types/card';
 
 export default function CardItem({
   id,
@@ -45,7 +31,7 @@ export default function CardItem({
     <Link
       to={`/products?id=${id}`}
       className={cn(
-        'block no-underline group',
+        'block no-underline group border border-gray-200 overflow-hidden',
         isOutOfStock && 'opacity-60 cursor-not-allowed',
         className
       )}
@@ -98,7 +84,7 @@ export default function CardItem({
         </div>
 
         {/* Product Info */}
-        <div className="mt-4 space-y-1 px-1">
+        <div className=" space-y-1 p-4">
           {/* Title */}
           <h3 className="text-sm text-gray-900 font-normal">{title}</h3>
 

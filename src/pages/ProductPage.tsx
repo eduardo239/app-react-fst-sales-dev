@@ -144,7 +144,7 @@ export default function ProductPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Product Images */}
           <div className="space-y-4">
-            <div className="aspect-w-1 aspect-h-1 bg-gray-100 rounded-lg overflow-hidden">
+            <div className="aspect-w-1 aspect-h-1 bg-gray-100 overflow-hidden">
               <img
                 src={selectedImage.url}
                 alt={selectedImage.alt}
@@ -157,10 +157,10 @@ export default function ProductPage() {
                   key={image.id}
                   onClick={() => setSelectedImage(image)}
                   className={cn(
-                    'aspect-w-1 aspect-h-1 rounded-lg overflow-hidden',
+                    'aspect-w-1 aspect-h-1 overflow-hidden',
                     selectedImage.id === image.id
-                      ? 'ring-2 ring-blue-500'
-                      : 'ring-1 ring-gray-200'
+                      ? 'ring-3 ring-gray-800'
+                      : 'ring-3 ring-gray-200'
                   )}
                 >
                   <img
@@ -372,7 +372,7 @@ export default function ProductPage() {
             {relatedProducts.map((relatedProduct) => (
               <div
                 key={relatedProduct.id}
-                className="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className="group relative bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="aspect-w-1 aspect-h-1 bg-gray-200">
                   <img

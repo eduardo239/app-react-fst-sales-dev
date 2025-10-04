@@ -1,35 +1,11 @@
 import { useState, useEffect } from 'react';
 import { cn } from '../styles/theme';
+import { products } from '../db';
 import CardWrapper from '../components/CardWrapper';
 import CardItem from '../components/CardItem';
 import FilterBar from '../components/FilterBar';
 import ContentWrapper from '../components/ContentWrapper';
-import TextHeader1 from '../components/TextHeader1';
-import { products } from '../db';
-
-// Filter and sort options
-const categories = [
-  { id: 'all', label: 'All Products' },
-  { id: 'electronics', label: 'Electronics' },
-  { id: 'accessories', label: 'Accessories' },
-  { id: 'gaming', label: 'Gaming' },
-];
-
-const priceRanges = [
-  { id: 'all', label: 'All Prices', range: { min: 0, max: Infinity } },
-  { id: 'under-25', label: 'Under $25', range: { min: 0, max: 25 } },
-  { id: '25-50', label: '$25 to $50', range: { min: 25, max: 50 } },
-  { id: '50-100', label: '$50 to $100', range: { min: 50, max: 100 } },
-  { id: 'over-100', label: 'Over $100', range: { min: 100, max: Infinity } },
-];
-
-const sortOptions = [
-  { id: 'featured', label: 'Featured' },
-  { id: 'newest', label: 'Newest' },
-  { id: 'price-asc', label: 'Price: Low to High' },
-  { id: 'price-desc', label: 'Price: High to Low' },
-  { id: 'rating', label: 'Highest Rated' },
-];
+import { categories, priceRanges, sortOptions } from '../options';
 
 export default function ShopPage() {
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -100,11 +76,6 @@ export default function ShopPage() {
     return () => clearTimeout(timer);
   }, [selectedCategory, selectedPrice, selectedSort]);
 
-  const handleQuickView = (product: any) => {
-    // Handle quick view action
-    console.log('Quick view:', product);
-  };
-
   const handleAddToCart = (product: any) => {
     // Handle add to cart action
     console.log('Add to cart:', product);
@@ -113,12 +84,6 @@ export default function ShopPage() {
   return (
     <ContentWrapper variant="full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* <div className="flex items-center justify-between mb-8">
-          <p className="text-sm text-gray-500">
-            {filteredProducts.length} products
-          </p>
-        </div> */}
-
         {/* Filters */}
         <div className="mb-8">
           <FilterBar
