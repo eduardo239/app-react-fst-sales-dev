@@ -1,18 +1,6 @@
 import React from 'react';
 import { cn } from '../styles/theme';
-
-interface FormWrapperProps {
-  children: React.ReactNode;
-  title?: string;
-  subtitle?: string;
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
-  className?: string;
-  variant?: 'default' | 'card' | 'minimal';
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
-  loading?: boolean;
-  error?: string;
-  success?: string;
-}
+import type { FormWrapperProps } from '../types/layout';
 
 export default function FormWrapper({
   children,

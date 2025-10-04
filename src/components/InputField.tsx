@@ -1,11 +1,5 @@
-import React from 'react';
 import { theme, cn } from '../styles/theme';
-
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  error?: string;
-  variant?: 'default' | 'outline';
-}
+import type { InputProps } from '../types/layout';
 
 export default function InputField({
   label,

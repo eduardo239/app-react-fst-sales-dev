@@ -2,17 +2,7 @@ import { useState } from 'react';
 import { cn } from '../styles/theme';
 import { ImageWithFallback, ImagePaths } from '../utils/imageUtils';
 import { useNavigate } from 'react-router-dom';
-
-interface HeaderBarProps {
-  cartItemCount?: number;
-  onSearchSubmit?: (query: string) => void;
-  isLoggedIn?: boolean;
-  userAvatar?: string;
-  userName?: string;
-
-  onLogout?: () => void;
-  onProfileClick?: () => void;
-}
+import type { HeaderBarProps } from '../types/layout';
 
 export default function HeaderBar({
   cartItemCount = 0,

@@ -1,39 +1,6 @@
 import { useState } from 'react';
 import { cn } from '../styles/theme';
-
-interface FilterOption {
-  id: string;
-  label: string;
-}
-
-interface PriceOption {
-  id: string;
-  label: string;
-  range: { min: number; max: number };
-}
-
-interface FilterBarProps {
-  categories: FilterOption[];
-  selectedCategory?: string;
-  onCategoryChange: (category: string) => void;
-
-  priceOptions: PriceOption[];
-  selectedPrice?: string;
-  onPriceChange: (priceId: string) => void;
-
-  sortOptions: FilterOption[];
-  selectedSort?: string;
-  onSortChange: (sort: string) => void;
-
-  className?: string;
-}
-
-type DropdownProps = {
-  label: string;
-  options: FilterOption[] | PriceOption[];
-  selected?: string;
-  onChange: (value: string) => void;
-};
+import type { DropdownProps, FilterBarProps } from '../types/layout';
 
 export default function FilterBar({
   categories,

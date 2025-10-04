@@ -1,11 +1,5 @@
 import { cn } from '../styles/theme';
-
-interface SeparatorProps {
-  label?: string;
-  className?: string;
-  variant?: 'default' | 'light' | 'dark';
-  orientation?: 'horizontal' | 'vertical';
-}
+import type { SeparatorProps } from '../types/layout';
 
 export default function Separator({
   label,

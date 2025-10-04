@@ -1,22 +1,5 @@
-import React from 'react';
 import { cn } from '../styles/theme';
-
-type SocialProvider =
-  | 'google'
-  | 'facebook'
-  | 'x'
-  | 'github'
-  | 'apple'
-  | 'linkedin';
-
-interface SocialButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  provider: SocialProvider;
-  size?: 'sm' | 'md' | 'lg';
-  variant?: 'default' | 'outline' | 'minimal';
-  showText?: boolean;
-  loading?: boolean;
-}
+import type { SocialButtonProps, SocialProvider } from '../types/layout';
 
 export default function SocialButton({
   provider,

@@ -1,15 +1,6 @@
 import React from 'react';
 import { cn } from '../styles/theme';
-
-interface ContentWrapperProps {
-  children: React.ReactNode;
-  variant?: 'default' | 'narrow' | 'wide' | 'full';
-  spacing?: 'none' | 'tight' | 'default' | 'relaxed' | 'loose';
-  backgroundColor?: 'none' | 'white' | 'gray' | 'primary';
-  centered?: boolean;
-  className?: string;
-  containerClassName?: string;
-}
+import type { ContentWrapperProps } from '../types/layout';
 
 export default function ContentWrapper({
   children,

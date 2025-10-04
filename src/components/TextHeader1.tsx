@@ -1,7 +1,4 @@
-interface TextHeader1Props {
-  title: string;
-  subtitle?: string;
-}
+import type { TextHeader1Props } from '../types/layout';
 
 export default function TextHeader1({ title, subtitle }: TextHeader1Props) {
   return (

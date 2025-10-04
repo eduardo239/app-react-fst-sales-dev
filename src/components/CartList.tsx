@@ -1,15 +1,6 @@
 import { cn } from '../styles/theme';
+import type { CartItemType } from '../types/cart';
 import { ImageWithFallback, ImagePaths } from '../utils/imageUtils';
-
-interface CartItemType {
-  id: number;
-  title: string;
-  price: number;
-  currency?: string;
-  image: string;
-  imageAlt?: string;
-  quantity: number;
-}
 
 interface CartListProps {
   items: CartItemType[];
