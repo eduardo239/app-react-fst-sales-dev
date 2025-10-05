@@ -6,8 +6,8 @@ import ContentWrapper from '../components/ContentWrapper';
 import TextHeader from '../components/TextHeader';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
-import ButtonInput from '../components/ButtonInput';
 import Separator from '../components/Separator';
+import ButtonSubmit from '../components/ButtonSubmit';
 
 const paymentMethods: PaymentMethod[] = [
   {
@@ -109,7 +109,7 @@ export default function PaymentPage() {
   return (
     <ContentWrapper variant="default" spacing="relaxed" backgroundColor="gray">
       <div className="max-w-4xl mx-auto">
-        <TextHeader title="Payment" />
+        <TextHeader value="Payment" />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
           {/* Payment Form */}
@@ -219,14 +219,8 @@ export default function PaymentPage() {
                 <p className="text-gray-600 mb-4">
                   You will be redirected to PayPal to complete your payment.
                 </p>
-                <ButtonInput
-                  type="button"
-                  onClick={handleSubmit}
-                  className="w-full"
-                  loading={loading}
-                >
-                  Continue with PayPal
-                </ButtonInput>
+
+                <ButtonSubmit value="Continue with PayPal" onClick={() => {}} />
               </div>
             )}
           </div>
@@ -255,17 +249,7 @@ export default function PaymentPage() {
                 </div>
               </div>
 
-              <ButtonInput
-                type="submit"
-                variant="default"
-                className="w-full mt-6"
-                loading={loading}
-                onClick={handleSubmit}
-              >
-                {loading
-                  ? 'Processing...'
-                  : `Pay $${orderSummary.total.toFixed(2)}`}
-              </ButtonInput>
+              <ButtonSubmit value="Place Order" onClick={() => {}} />
 
               <p className="mt-4 text-sm text-gray-500 text-center">
                 Your payment information is secure and encrypted

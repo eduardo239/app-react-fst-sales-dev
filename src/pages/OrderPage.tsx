@@ -3,9 +3,9 @@ import { cn } from '../styles/theme';
 import type { Order } from '../types/order';
 import ContentWrapper from '../components/ContentWrapper';
 import TextHeader from '../components/TextHeader';
-import ButtonInput from '../components/ButtonInput';
 import Separator from '../components/Separator';
 import { mockOrders } from '../utils/db';
+import ButtonSubmit from '../components/ButtonSubmit';
 
 const statusColors = {
   processing: 'bg-blue-100 text-blue-800',
@@ -32,7 +32,7 @@ export default function OrderPage() {
   return (
     <ContentWrapper variant="default" spacing="relaxed" backgroundColor="gray">
       <div className="max-w-4xl mx-auto">
-        <TextHeader title="My Orders" />
+        <TextHeader value="My Orders" />
 
         {orders.length === 0 ? (
           <div className="text-center py-12">
@@ -57,12 +57,10 @@ export default function OrderPage() {
             <p className="text-gray-500 mb-6">
               When you place an order, it will appear here.
             </p>
-            <ButtonInput
-              variant="default"
+            <ButtonSubmit
+              value="Start Shopping"
               onClick={() => (window.location.href = '/')}
-            >
-              Start Shopping
-            </ButtonInput>
+            />
           </div>
         ) : (
           <div className="space-y-6">
@@ -165,9 +163,7 @@ export default function OrderPage() {
                             <p className="text-sm text-gray-600">
                               Tracking Number: {order.trackingNumber}
                             </p>
-                            <ButtonInput
-                              variant="outline"
-                              className="mt-2"
+                            <ButtonSubmit
                               onClick={() => {
                                 // Implement tracking link
                                 console.log(
@@ -175,34 +171,29 @@ export default function OrderPage() {
                                   order.trackingNumber
                                 );
                               }}
-                            >
-                              Track Order
-                            </ButtonInput>
+                              value="Track Order"
+                            />
                           </div>
                         )}
                       </div>
 
                       {/* Order Actions */}
                       <div className="flex justify-end space-x-4">
-                        <ButtonInput
-                          variant="outline"
+                        <ButtonSubmit
+                          value="Need Help?"
                           onClick={() => {
                             // Implement order support
                             console.log('Need help with order:', order.id);
                           }}
-                        >
-                          Need Help?
-                        </ButtonInput>
+                        />
                         {order.status === 'delivered' && (
-                          <ButtonInput
-                            variant="default"
+                          <ButtonSubmit
+                            value="Buy Again"
                             onClick={() => {
                               // Implement buy again functionality
                               console.log('Buy again:', order.id);
                             }}
-                          >
-                            Buy Again
-                          </ButtonInput>
+                          />
                         )}
                       </div>
                     </div>

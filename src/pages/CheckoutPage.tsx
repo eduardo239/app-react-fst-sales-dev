@@ -78,7 +78,7 @@ export default function CheckoutPage() {
           <div className="col-span-12 lg:col-span-2">
             <div className="sticky top-4">
               <TextHeader
-                title={
+                value={
                   currentStep === 'shipping'
                     ? 'Shipping Details'
                     : 'Payment Details'

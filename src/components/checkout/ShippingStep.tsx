@@ -1,7 +1,6 @@
 import React from 'react';
 import FormWrapper from '../FormWrapper';
 import InputField from '../InputField';
-import ButtonInput from '../ButtonInput';
 import type { ShippingDetails } from '../../types/shipping';
 import ButtonSubmit from '../ButtonSubmit';
 

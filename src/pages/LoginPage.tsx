@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import ButtonInput from '../components/ButtonInput';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
 import TextHeader from '../components/TextHeader';
 import SocialButton from '../components/SocialButton';
 import Separator from '../components/Separator';
+import ButtonSubmit from '../components/ButtonSubmit';
 
 export default function LoginPage() {
   const [form, setForm] = useState({
@@ -30,7 +30,7 @@ export default function LoginPage() {
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
-        <ButtonInput>Submit</ButtonInput>
+        <ButtonSubmit onClick={() => {}} value="Submit" />
       </FormWrapper>
       <Separator label="Or continue with" />
       <div className="w-full max-w-md mx-auto gap-2 flex flex-col flex-wrap justify-center mt-6">

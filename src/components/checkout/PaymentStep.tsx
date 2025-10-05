@@ -1,8 +1,8 @@
 import React from 'react';
 import FormWrapper from '../FormWrapper';
 import InputField from '../InputField';
-import ButtonInput from '../ButtonInput';
 import type { PaymentDetails } from '../../types/payment';
+import ButtonSubmit from '../ButtonSubmit';
 
 interface PaymentStepProps {
   paymentDetails: PaymentDetails;
@@ -65,22 +65,8 @@ export default function PaymentStep({
       </div>
 
       <div className="flex justify-between">
-        <ButtonInput
-          type="button"
-          variant="outline"
-          size="lg"
-          onClick={onBackToShipping}
-        >
-          Back to Shipping
-        </ButtonInput>
-        <ButtonInput
-          type="submit"
-          variant="default"
-          size="lg"
-          loading={loading}
-        >
-          Complete Order
-        </ButtonInput>
+        <ButtonSubmit onClick={onBackToShipping} value="Back to Shipping" />
+        <ButtonSubmit onClick={() => {}} value="Complete Order" />
       </div>
     </FormWrapper>
   );

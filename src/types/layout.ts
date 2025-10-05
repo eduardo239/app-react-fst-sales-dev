@@ -98,6 +98,12 @@ export interface SocialButtonProps
 }
 
 export interface TextHeader1Props {
-  title: string;
+  value: string;
   subtitle?: string;
+  fontSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
+}
+
+export interface TextParagraphProps {
+  value: string;
+  fontSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
 }

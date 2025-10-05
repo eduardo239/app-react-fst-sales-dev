@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ButtonInput from '../components/ButtonInput';
+import ButtonSubmit from '../components/ButtonSubmit';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
 import TextHeader from '../components/TextHeader';
@@ -37,7 +37,7 @@ export default function RegisterPage() {
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
-        <ButtonInput>Submit</ButtonInput>
+        <ButtonSubmit value="Submit" onClick={() => {}} />
       </FormWrapper>
       <Separator label="Or continue with" />
       <div className="w-full max-w-md mx-auto gap-2 flex flex-col flex-wrap justify-center mt-6">

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import ContentWrapper from '../components/ContentWrapper';
 import TextHeader from '../components/TextHeader';
-import ButtonInput from '../components/ButtonInput';
+import ButtonSubmit from '../components/ButtonSubmit';
 
 export default function PaymentSuccess() {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function PaymentSuccess() {
         </div>
 
         {/* Success Message */}
-        <TextHeader title="Payment Successful!" />
+        <TextHeader value="Payment Successful!" />
         <p className="mt-4 text-lg text-gray-600">
           Thank you for your purchase. Your order has been confirmed.
         </p>
@@ -141,20 +141,15 @@ export default function PaymentSuccess() {
 
         {/* Action Buttons */}
         <div className="mt-8 space-x-4">
-          <ButtonInput
-            variant="outline"
+          <ButtonSubmit
+            value="View Orders"
             onClick={() => navigate('/orders')}
-            className="min-w-[150px]"
-          >
-            View Orders
-          </ButtonInput>
-          <ButtonInput
-            variant="default"
+          />
+
+          <ButtonSubmit
+            value="Continue Shopping"
             onClick={() => navigate('/')}
-            className="min-w-[150px]"
-          >
-            Continue Shopping
-          </ButtonInput>
+          />
         </div>
 
         {/* Support Information */}
