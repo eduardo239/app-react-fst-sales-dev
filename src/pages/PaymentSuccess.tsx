@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import ContentWrapper from '../components/ContentWrapper';
-import TextHeader1 from '../components/TextHeader1';
+import TextHeader from '../components/TextHeader';
 import ButtonInput from '../components/ButtonInput';
 
 export default function PaymentSuccess() {
@@ -39,7 +39,7 @@ export default function PaymentSuccess() {
         </div>
 
         {/* Success Message */}
-        <TextHeader1 title="Payment Successful!" />
+        <TextHeader title="Payment Successful!" />
         <p className="mt-4 text-lg text-gray-600">
           Thank you for your purchase. Your order has been confirmed.
         </p>

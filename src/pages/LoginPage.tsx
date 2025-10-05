@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ButtonInput from '../components/ButtonInput';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
-import TextHeader1 from '../components/TextHeader1';
+import TextHeader from '../components/TextHeader';
 import SocialButton from '../components/SocialButton';
 import Separator from '../components/Separator';
 
@@ -16,7 +16,7 @@ export default function LoginPage() {
     <div className="p-4">
       {JSON.stringify(form)}
       <FormWrapper>
-        <TextHeader1 title="Login" subtitle="Access your account" />
+        <TextHeader title="Login" subtitle="Access your account" />
         <InputField
           label="Email"
           placeholder="Type here..."

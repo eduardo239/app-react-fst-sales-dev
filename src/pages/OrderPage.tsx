@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { cn } from '../styles/theme';
 import type { Order } from '../types/order';
 import ContentWrapper from '../components/ContentWrapper';
-import TextHeader1 from '../components/TextHeader1';
+import TextHeader from '../components/TextHeader';
 import ButtonInput from '../components/ButtonInput';
 import Separator from '../components/Separator';
 import { mockOrders } from '../utils/db';
@@ -32,7 +32,7 @@ export default function OrderPage() {
   return (
     <ContentWrapper variant="default" spacing="relaxed" backgroundColor="gray">
       <div className="max-w-4xl mx-auto">
-        <TextHeader1 title="My Orders" />
+        <TextHeader title="My Orders" />
 
         {orders.length === 0 ? (
           <div className="text-center py-12">

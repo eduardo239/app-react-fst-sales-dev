@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { cn } from '../styles/theme';
 import { initialCartItems } from '../utils/db';
 import CartList from '../components/CartList';
-import TextHeader1 from '../components/TextHeader1';
+import TextHeader from '../components/TextHeader';
 import ContentWrapper from '../components/ContentWrapper';
+import ButtonSubmit from '../components/ButtonSubmit';
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState(initialCartItems);
@@ -42,10 +43,11 @@ export default function CartPage() {
     <ContentWrapper>
       {cartItems.length === 0 ? (
         <div className="text-center py-16">
-          <TextHeader1 title="Your cart is empty" />
-          <p className="mt-4 text-gray-600">
-            Looks like you haven't added anything to your cart yet.
-          </p>
+          <TextHeader
+            title="Your cart is empty"
+            subtitle="Looks like you haven't added anything to your cart yet."
+          />
+
           <a
             href="/"
             className={cn(
@@ -61,7 +63,10 @@ export default function CartPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-8">
-            <TextHeader1 title="Shopping Cart" />
+            <TextHeader
+              title="Shopping Cart"
+              subtitle="Looks like you haven't added anything to your cart yet."
+            />
             <CartList
               items={cartItems}
               onUpdateQuantity={handleUpdateQuantity}
@@ -75,6 +80,7 @@ export default function CartPage() {
               <h2 className="text-lg font-medium text-gray-900">
                 Order Summary
               </h2>
+              <TextHeader title="Order Summary" />
 
               <div className="mt-6 space-y-4">
                 <div className="flex items-center justify-between">
@@ -94,16 +100,10 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <button
+              <ButtonSubmit
                 onClick={handleCheckout}
-                className={cn(
-                  'mt-6 w-full px-6 py-3 text-base font-medium text-white',
-                  'bg-gray-900 hover:bg-gray-800',
-                  'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'
-                )}
-              >
-                Proceed to Checkout
-              </button>
+                value="Proceed to Checkout"
+              />
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import type { TextHeader1Props } from '../types/layout';
 
-export default function TextHeader1({ title, subtitle }: TextHeader1Props) {
+export default function TextHeader({ title, subtitle }: TextHeader1Props) {
   return (
     <div>
       <h1 className="text-2xl font-bold">{title}</h1>

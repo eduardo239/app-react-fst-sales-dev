@@ -3,7 +3,7 @@ import { cn } from '../styles/theme';
 import { useNavigate } from 'react-router-dom';
 import type { PaymentMethod } from '../types/payment';
 import ContentWrapper from '../components/ContentWrapper';
-import TextHeader1 from '../components/TextHeader1';
+import TextHeader from '../components/TextHeader';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
 import ButtonInput from '../components/ButtonInput';
@@ -109,7 +109,7 @@ export default function PaymentPage() {
   return (
     <ContentWrapper variant="default" spacing="relaxed" backgroundColor="gray">
       <div className="max-w-4xl mx-auto">
-        <TextHeader1 title="Payment" />
+        <TextHeader title="Payment" />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
           {/* Payment Form */}

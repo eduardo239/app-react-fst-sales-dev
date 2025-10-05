@@ -3,6 +3,7 @@ import FormWrapper from '../FormWrapper';
 import InputField from '../InputField';
 import ButtonInput from '../ButtonInput';
 import type { ShippingDetails } from '../../types/shipping';
+import ButtonSubmit from '../ButtonSubmit';
 
 interface ShippingStepProps {
   shippingDetails: ShippingDetails;
@@ -98,9 +99,7 @@ export default function ShippingStep({
       />
 
       <div className="flex justify-end">
-        <ButtonInput type="submit" variant="default" size="lg">
-          Continue to Payment
-        </ButtonInput>
+        <ButtonSubmit onClick={() => {}} value="Continue to Payment" />
       </div>
     </FormWrapper>
   );

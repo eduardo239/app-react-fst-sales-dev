@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ButtonInput from '../components/ButtonInput';
 import FormWrapper from '../components/FormWrapper';
 import InputField from '../components/InputField';
-import TextHeader1 from '../components/TextHeader1';
+import TextHeader from '../components/TextHeader';
 import Separator from '../components/Separator';
 import SocialButton from '../components/SocialButton';
 
@@ -17,7 +17,7 @@ export default function RegisterPage() {
     <div className="p-4">
       {JSON.stringify(form)}
       <FormWrapper>
-        <TextHeader1 title="Register" subtitle="Create a new account" />
+        <TextHeader title="Register" subtitle="Create a new account" />
         <InputField
           label="Username"
           placeholder="Type here..."

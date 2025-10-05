@@ -20,7 +20,7 @@ export default function CartList({
   };
 
   return (
-    <div className={cn('flex flex-col space-y-4', className)}>
+    <div className={cn('flex flex-col space-y-4 mt-4', className)}>
       {items.map((item) => (
         <div
           key={item.id}

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { cn } from '../styles/theme';
 import { mockCartItems } from '../utils/db';
 import type { PaymentDetails } from '../types/payment';
 import type { ShippingDetails } from '../types/shipping';
 import ContentWrapper from '../components/ContentWrapper';
-import TextHeader1 from '../components/TextHeader1';
+import TextHeader from '../components/TextHeader';
 import ProgressSteps from '../components/checkout/ProgressSteps';
 import ShippingStep from '../components/checkout/ShippingStep';
 import PaymentStep from '../components/checkout/PaymentStep';
@@ -78,7 +77,7 @@ export default function CheckoutPage() {
           {/* Title Section - Left Side */}
           <div className="col-span-12 lg:col-span-2">
             <div className="sticky top-4">
-              <TextHeader1
+              <TextHeader
                 title={
                   currentStep === 'shipping'
                     ? 'Shipping Details'
@@ -113,14 +112,12 @@ export default function CheckoutPage() {
           </div>
 
           {/* Order Summary - Right Side, Wider */}
-          <div className="col-span-12 lg:col-span-4">
-            <OrderSummary
-              subtotal={subtotal}
-              shipping={shipping}
-              tax={tax}
-              total={total}
-            />
-          </div>
+          <OrderSummary
+            subtotal={subtotal}
+            shipping={shipping}
+            tax={tax}
+            total={total}
+          />
         </div>
       </div>
     </ContentWrapper>
