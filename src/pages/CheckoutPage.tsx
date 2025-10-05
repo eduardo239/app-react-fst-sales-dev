@@ -5,11 +5,11 @@ import { mockCartItems } from '../utils/db';
 import type { PaymentDetails } from '../types/payment';
 import type { ShippingDetails } from '../types/shipping';
 import ContentWrapper from '../components/ContentWrapper';
-import FormWrapper from '../components/FormWrapper';
-import InputField from '../components/InputField';
-import ButtonInput from '../components/ButtonInput';
-import Separator from '../components/Separator';
 import TextHeader1 from '../components/TextHeader1';
+import ProgressSteps from '../components/checkout/ProgressSteps';
+import ShippingStep from '../components/checkout/ShippingStep';
+import PaymentStep from '../components/checkout/PaymentStep';
+import OrderSummary from '../components/checkout/OrderSummary';
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
@@ -72,47 +72,7 @@ export default function CheckoutPage() {
     <ContentWrapper variant="default" spacing="relaxed" backgroundColor="gray">
       <div className="max-w-7xl mx-auto">
         {/* Progress Steps */}
-        <div className="mb-8">
-          <div className="flex items-center justify-center space-x-4">
-            <div
-              className={cn(
-                'flex items-center space-x-2',
-                currentStep === 'shipping' ? 'text-blue-600' : 'text-gray-600'
-              )}
-            >
-              <div
-                className={cn(
-                  'w-8 h-8 rounded-full flex items-center justify-center',
-                  currentStep === 'shipping'
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-200'
-                )}
-              >
-                1
-              </div>
-              <span className="font-medium">Shipping</span>
-            </div>
-            <div className="w-16 h-0.5 bg-gray-200" />
-            <div
-              className={cn(
-                'flex items-center space-x-2',
-                currentStep === 'payment' ? 'text-blue-600' : 'text-gray-600'
-              )}
-            >
-              <div
-                className={cn(
-                  'w-8 h-8 rounded-full flex items-center justify-center',
-                  currentStep === 'payment'
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-200'
-                )}
-              >
-                2
-              </div>
-              <span className="font-medium">Payment</span>
-            </div>
-          </div>
-        </div>
+        <ProgressSteps currentStep={currentStep} />
 
         <div className="grid grid-cols-12 gap-8">
           {/* Title Section - Left Side */}
@@ -136,288 +96,30 @@ export default function CheckoutPage() {
           {/* Main Form Section - Center */}
           <div className="col-span-12 lg:col-span-6">
             {currentStep === 'shipping' ? (
-              <FormWrapper
+              <ShippingStep
+                shippingDetails={shippingDetails}
+                onShippingDetailsChange={setShippingDetails}
                 onSubmit={handleShippingSubmit}
-                className="space-y-6"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <InputField
-                    label="First Name"
-                    type="text"
-                    value={shippingDetails.firstName}
-                    onChange={(e) =>
-                      setShippingDetails({
-                        ...shippingDetails,
-                        firstName: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                  <InputField
-                    label="Last Name"
-                    type="text"
-                    value={shippingDetails.lastName}
-                    onChange={(e) =>
-                      setShippingDetails({
-                        ...shippingDetails,
-                        lastName: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                </div>
-
-                <InputField
-                  label="Email"
-                  type="email"
-                  value={shippingDetails.email}
-                  onChange={(e) =>
-                    setShippingDetails({
-                      ...shippingDetails,
-                      email: e.target.value,
-                    })
-                  }
-                  required
-                />
-
-                <InputField
-                  label="Phone"
-                  type="tel"
-                  value={shippingDetails.phone}
-                  onChange={(e) =>
-                    setShippingDetails({
-                      ...shippingDetails,
-                      phone: e.target.value,
-                    })
-                  }
-                  required
-                />
-
-                <InputField
-                  label="Address"
-                  type="text"
-                  value={shippingDetails.address}
-                  onChange={(e) =>
-                    setShippingDetails({
-                      ...shippingDetails,
-                      address: e.target.value,
-                    })
-                  }
-                  required
-                />
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <InputField
-                    label="City"
-                    type="text"
-                    value={shippingDetails.city}
-                    onChange={(e) =>
-                      setShippingDetails({
-                        ...shippingDetails,
-                        city: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                  <InputField
-                    label="State"
-                    type="text"
-                    value={shippingDetails.state}
-                    onChange={(e) =>
-                      setShippingDetails({
-                        ...shippingDetails,
-                        state: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                  <InputField
-                    label="ZIP Code"
-                    type="text"
-                    value={shippingDetails.zipCode}
-                    onChange={(e) =>
-                      setShippingDetails({
-                        ...shippingDetails,
-                        zipCode: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                </div>
-
-                <InputField
-                  label="Country"
-                  type="text"
-                  value={shippingDetails.country}
-                  onChange={(e) =>
-                    setShippingDetails({
-                      ...shippingDetails,
-                      country: e.target.value,
-                    })
-                  }
-                  required
-                />
-
-                <div className="flex justify-end">
-                  <ButtonInput type="submit" variant="default" size="lg">
-                    Continue to Payment
-                  </ButtonInput>
-                </div>
-              </FormWrapper>
+              />
             ) : (
-              <FormWrapper onSubmit={handlePaymentSubmit} className="space-y-6">
-                <InputField
-                  label="Card Number"
-                  type="text"
-                  value={paymentDetails.cardNumber}
-                  onChange={(e) =>
-                    setPaymentDetails({
-                      ...paymentDetails,
-                      cardNumber: e.target.value,
-                    })
-                  }
-                  placeholder="1234 5678 9012 3456"
-                  required
-                />
-
-                <InputField
-                  label="Card Holder Name"
-                  type="text"
-                  value={paymentDetails.cardHolder}
-                  onChange={(e) =>
-                    setPaymentDetails({
-                      ...paymentDetails,
-                      cardHolder: e.target.value,
-                    })
-                  }
-                  required
-                />
-
-                <div className="grid grid-cols-2 gap-4">
-                  <InputField
-                    label="Expiry Date"
-                    type="text"
-                    value={paymentDetails.expiryDate}
-                    onChange={(e) =>
-                      setPaymentDetails({
-                        ...paymentDetails,
-                        expiryDate: e.target.value,
-                      })
-                    }
-                    placeholder="MM/YY"
-                    required
-                  />
-                  <InputField
-                    label="CVV"
-                    type="text"
-                    value={paymentDetails.cvv}
-                    onChange={(e) =>
-                      setPaymentDetails({
-                        ...paymentDetails,
-                        cvv: e.target.value,
-                      })
-                    }
-                    placeholder="123"
-                    required
-                  />
-                </div>
-
-                <div className="flex justify-between">
-                  <ButtonInput
-                    type="button"
-                    variant="outline"
-                    size="lg"
-                    onClick={() => setCurrentStep('shipping')}
-                  >
-                    Back to Shipping
-                  </ButtonInput>
-                  <ButtonInput
-                    type="submit"
-                    variant="default"
-                    size="lg"
-                    loading={loading}
-                  >
-                    Complete Order
-                  </ButtonInput>
-                </div>
-              </FormWrapper>
+              <PaymentStep
+                paymentDetails={paymentDetails}
+                onPaymentDetailsChange={setPaymentDetails}
+                onSubmit={handlePaymentSubmit}
+                onBackToShipping={() => setCurrentStep('shipping')}
+                loading={loading}
+              />
             )}
           </div>
 
           {/* Order Summary - Right Side, Wider */}
           <div className="col-span-12 lg:col-span-4">
-            <div className="bg-white p-6 sticky top-4">
-              <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
-
-              {/* Cart Items */}
-              <div className="space-y-4 mb-6">
-                {mockCartItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="p-4 bg-gray-50 rounded-lg border border-gray-100"
-                  >
-                    <div className="flex items-start space-x-4 mb-3">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-16 h-16 object-cover rounded-md flex-shrink-0"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-medium text-gray-900 leading-tight">
-                          {item.name}
-                        </h3>
-                        <p className="text-sm text-gray-500 mt-1">
-                          ${item.price.toFixed(2)} each
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between pt-2 border-t border-gray-200">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-sm text-gray-600">Quantity:</span>
-                        <span className="font-medium text-gray-900">
-                          {item.quantity}
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-semibold text-lg text-gray-900">
-                          ${(item.price * item.quantity).toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Separator />
-
-              {/* Totals */}
-              <div className="space-y-3 my-6">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span className="font-medium">${subtotal.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Shipping</span>
-                  <span className="font-medium">${shipping.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Tax (10%)</span>
-                  <span className="font-medium">${tax.toFixed(2)}</span>
-                </div>
-              </div>
-
-              <Separator />
-
-              <div className="flex justify-between items-center mt-6 p-4 bg-blue-50 rounded-lg">
-                <span className="text-lg font-semibold text-gray-900">
-                  Total
-                </span>
-                <span className="text-xl font-bold text-blue-600">
-                  ${total.toFixed(2)}
-                </span>
-              </div>
-            </div>
+            <OrderSummary
+              subtotal={subtotal}
+              shipping={shipping}
+              tax={tax}
+              total={total}
+            />
           </div>
         </div>
       </div>
