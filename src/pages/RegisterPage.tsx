@@ -17,7 +17,7 @@ export default function RegisterPage() {
     <div className="p-4">
       {JSON.stringify(form)}
       <FormWrapper>
-        <TextHeader title="Register" subtitle="Create a new account" />
+        <TextHeader value="Register" subtitle="Create a new account" />
         <InputField
           label="Username"
           placeholder="Type here..."

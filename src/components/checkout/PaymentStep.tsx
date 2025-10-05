@@ -17,7 +17,6 @@ export default function PaymentStep({
   onPaymentDetailsChange,
   onSubmit,
   onBackToShipping,
-  loading = false,
 }: PaymentStepProps) {
   const handleInputChange = (field: keyof PaymentDetails, value: string) => {
     onPaymentDetailsChange({
@@ -64,7 +63,7 @@ export default function PaymentStep({
         />
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex gap-4 justify-between">
         <ButtonSubmit onClick={onBackToShipping} value="Back to Shipping" />
         <ButtonSubmit onClick={() => {}} value="Complete Order" />
       </div>

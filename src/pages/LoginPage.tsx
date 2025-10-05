@@ -16,7 +16,7 @@ export default function LoginPage() {
     <div className="p-4">
       {JSON.stringify(form)}
       <FormWrapper>
-        <TextHeader title="Login" subtitle="Access your account" />
+        <TextHeader value="Login" subtitle="Access your account" />
         <InputField
           label="Email"
           placeholder="Type here..."
