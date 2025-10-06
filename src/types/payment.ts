@@ -13,3 +13,11 @@ export interface PaymentDetails {
   expiryDate: string;
   cvv: string;
 }
+
+export interface PaymentFormData {
+  cardNumber: string;
+  cardName: string;
+  expiryDate: string;
+  cvv: string;
+  saveCard: boolean;
+}

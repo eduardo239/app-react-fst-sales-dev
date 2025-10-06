@@ -3,6 +3,7 @@ import FormWrapper from './FormWrapper';
 import InputField from './InputField';
 import { cn } from '../styles/theme';
 import type { CheckoutFormData, CheckoutProps } from '../types/checkout';
+import TextParagraph from './TextParagraph';
 
 export default function Checkout({
   onSubmit,
@@ -78,9 +79,8 @@ export default function Checkout({
     >
       {/* Order Summary */}
       <div className="mb-8 p-4 bg-gray-50 ">
-        <h2 className="text-lg font-medium text-gray-900 mb-2">
-          Order Summary
-        </h2>
+        <TextParagraph value="Order Summary" fontSize="lg" />
+
         <div className="flex justify-between items-center">
           <span className="text-base text-gray-600">Total</span>
           <span className="text-lg font-medium text-gray-900">

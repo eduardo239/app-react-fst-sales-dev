@@ -8,7 +8,7 @@
 - [x] Implement login form
 - [ ] Implement logout functionality
 - [ ] Password reset and recovery
-- [ ] Social login integration
+- [x] Social login integration
 
 ### User Profile Management
 
@@ -19,24 +19,24 @@
 
 ### Product Catalog
 
-- [ ] Display product list
+- [x] Display product list
 - [ ] Implement search functionality
-- [ ] Add filters (category, price, brand)
-- [ ] Add sorting (price, popularity, rating)
+- [x] Add filters (category, price, brand)
+- [x] Add sorting (price, popularity, rating)
 - [ ] Pagination or infinite scroll
 
 ### Product Details Page
 
-- [ ] Show product images and gallery
-- [ ] Display product description and specs
-- [ ] Show price and availability
+- [x] Show product images and gallery
+- [x] Display product description and specs
+- [x] Show price and availability
 - [ ] Add to cart and wishlist buttons
 
 ### Shopping Cart
 
-- [ ] Add/remove products to/from cart
-- [ ] Update product quantity
-- [ ] Display cart summary
+- [~] Add/remove products to/from cart
+- [x] Update product quantity
+- [x] Display cart summary
 - [ ] Persist cart between sessions
 
 ### Wishlist/Favorites
@@ -47,14 +47,14 @@
 
 ### Checkout Process
 
-- [ ] Collect shipping information
-- [ ] Collect billing information
+- [x] Collect shipping information
+- [x] Collect billing information
 - [ ] Payment method selection
-- [ ] Order review and confirmation
+- [x] Order review and confirmation
 
 ### Order Summary and Confirmation
 
-- [ ] Show order details after purchase
+- [x] Show order details after purchase
 - [ ] Email order confirmation
 
 ### Order History and Tracking

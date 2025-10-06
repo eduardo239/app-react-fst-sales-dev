@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { cn } from '../styles/theme';
+import { mockOrders } from '../utils/db';
 import type { Order } from '../types/order';
 import ContentWrapper from '../components/ContentWrapper';
 import TextHeader from '../components/TextHeader';
 import Separator from '../components/Separator';
-import { mockOrders } from '../utils/db';
 import ButtonSubmit from '../components/ButtonSubmit';
 
 const statusColors = {
@@ -67,7 +67,7 @@ export default function OrderPage() {
             {orders.map((order) => (
               <div
                 key={order.id}
-                className="bg-white rounded-lg shadow-sm overflow-hidden"
+                className="bg-white mt-4 border border-gray-200 overflow-hidden"
               >
                 {/* Order Header */}
                 <div
@@ -94,14 +94,35 @@ export default function OrderPage() {
                       Placed on {new Date(order.date).toLocaleDateString()}
                     </p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-lg font-medium">
-                      ${order.total.toFixed(2)}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      {order.items.length}{' '}
-                      {order.items.length === 1 ? 'item' : 'items'}
-                    </p>
+                  <div className="flex items-center space-x-4">
+                    <div className="text-right">
+                      <p className="text-lg font-medium">
+                        ${order.total.toFixed(2)}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {order.items.length}{' '}
+                        {order.items.length === 1 ? 'item' : 'items'}
+                      </p>
+                    </div>
+                    {/* Expand/Collapse Arrow */}
+                    <div className="flex items-center">
+                      <svg
+                        className={cn(
+                          'w-5 h-5 text-gray-400 transition-transform duration-200',
+                          selectedOrder?.id === order.id ? 'rotate-180' : ''
+                        )}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
@@ -143,7 +164,10 @@ export default function OrderPage() {
                       {/* Shipping Information */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-medium mb-2">Shipping Address</h4>
+                          <TextHeader
+                            value="Shipping Information"
+                            fontSize="lg"
+                          />
                           <div className="text-sm text-gray-600">
                             <p>{order.shippingAddress.name}</p>
                             <p>{order.shippingAddress.address}</p>
@@ -157,9 +181,10 @@ export default function OrderPage() {
 
                         {order.trackingNumber && (
                           <div>
-                            <h4 className="font-medium mb-2">
-                              Tracking Information
-                            </h4>
+                            <TextHeader
+                              value="Tracking Information"
+                              fontSize="lg"
+                            />
                             <p className="text-sm text-gray-600">
                               Tracking Number: {order.trackingNumber}
                             </p>

@@ -67,6 +67,7 @@ export default function CartPage() {
             <TextHeader
               value="Shopping Cart"
               subtitle="Looks like you haven't added anything to your cart yet."
+              fontSize="xl"
             />
             <CartList
               items={cartItems}
@@ -78,13 +79,9 @@ export default function CartPage() {
           {/* Order Summary */}
           <div className="lg:col-span-4">
             <div className="bg-gray-50 rounded-lg px-6 py-8">
-              <h2 className="text-lg font-medium text-gray-900">
-                Order Summary
-              </h2>
-              <TextHeader value="Order Summary" />
+              <TextHeader value="Order Summary" fontSize="xl" />
 
               <CartOrderSummary calculateTotal={calculateTotal} />
-
               <ButtonSubmit
                 onClick={handleCheckout}
                 value="Proceed to Checkout"

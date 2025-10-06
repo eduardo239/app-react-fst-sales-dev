@@ -33,8 +33,14 @@ export default function HeaderBar({
   const onRegister = () => navigate('/register');
   const onLogin = () => navigate('/login');
   const onCartClick = () => navigate('/cart');
+  function onOrdersClick(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    event.preventDefault();
+    navigate('/orders');
+  }
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -101,6 +107,25 @@ export default function HeaderBar({
           <div className="flex items-center space-x-4">
             {/* Cart */}
             <button
+              onClick={onOrdersClick}
+              className="relative p-2 text-gray-600 hover:text-gray-900 hover:cursor-pointer"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 7V6a2 2 0 012-2h14a2 2 0 012 2v1M3 7h18M3 7v11a2 2 0 002 2h14a2 2 0 002-2V7M16 11a4 4 0 01-8 0"
+                />
+              </svg>
+            </button>
+
+            <button
               onClick={onCartClick}
               className="relative p-2 text-gray-600 hover:text-gray-900 hover:cursor-pointer"
             >
@@ -163,7 +188,7 @@ export default function HeaderBar({
 
               {/* User Dropdown Menu */}
               {isUserMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 py-2 bg-white shadow-xl z-50">
+                <div className="absolute right-0 mt-2 w-48 py-2 bg-white z-50">
                   {isLoggedIn ? (
                     <>
                       <button
