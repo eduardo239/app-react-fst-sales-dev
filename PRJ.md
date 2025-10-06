@@ -59,7 +59,7 @@
 
 ### Order History and Tracking
 
-- [ ] List past orders
+- [x] List past orders
 - [ ] Show order status and tracking info
 
 ### Admin Dashboard
