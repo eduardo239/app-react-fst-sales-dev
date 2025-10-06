@@ -10,6 +10,8 @@ import TextHeader from '../components/TextHeader';
 import Rating from '../components/Rating';
 import ColorSwatches from '../components/ColorSwatches';
 import TextParagraph from '../components/TextParagraph';
+import ProductKeyFeatures from '../components/ProductKeyFeatures';
+import ProductSpecifications from '../components/ProductSpecifications';
 
 export default function ProductPage() {
   const navigate = useNavigate();
@@ -125,7 +127,7 @@ export default function ProductPage() {
               <div className="mt-2 flex items-center space-x-3">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-2 border rounded-md"
+                  className="p-2 border border-gray-300"
                   disabled={quantity <= 1}
                 >
                   <svg
@@ -147,7 +149,7 @@ export default function ProductPage() {
                 </span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="p-2 border rounded-md"
+                  className="p-2 border border-gray-300"
                 >
                   <svg
                     className="w-4 h-4"
@@ -178,35 +180,10 @@ export default function ProductPage() {
             </div>
 
             {/* Features */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
-                Key Features
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
-                {product.features.map((feature, index) => (
-                  <li key={index} className="text-gray-600">
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ProductKeyFeatures product={{ features: product.features }} />
 
             {/* Specifications */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
-                Specifications
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {product.specs.map((spec, index) => (
-                  <div key={index}>
-                    <dt className="text-sm font-medium text-gray-500">
-                      {spec.name}
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900">{spec.value}</dd>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ProductSpecifications product={{ specs: product.specs }} />
           </div>
         </div>
 
